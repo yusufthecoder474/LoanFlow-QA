@@ -1,0 +1,9 @@
+# Five interview questions and answers
+
+1. **Why did you use UI, API and database tests?** UI checks the user's experience, API checks the contract and authorization directly, and SQL checks what was saved. A successful response can still hide a persistence defect. Refer to EVALUATION.md for the measured seeded comparison.
+2. **How do you prevent flaky browser tests?** Use accessible role/label locators, independent synthetic records, fresh auth contexts, web-first assertions and HTTP readiness. There are no arbitrary sleeps in tests and no retries hiding failures.
+3. **How do you prevent duplicate decisions?** Review uses an atomic UPDATE restricted to SUBMITTED. The first decision changes the row; a later/concurrent request finds no eligible row and gets 409. A two-request test checks exactly one success and SQL matching that response. Native PostgreSQL locking remains to be validated on Docker/CI.
+4. **What is AI actually doing?** It proposes coverage gaps and candidate tests from requirements and observed UI. The regular suite runs without a key. Candidates stay outside active tests until a human reviews every assertion. MCP was blocked in this build environment; the optional integration and generated planner/generator definitions are provided without claiming successful agent execution.
+5. **What did the experiment prove?** It measures detection on eight deliberately seeded faults in this demo, with clean-baseline failures counted as false positives. B includes the same UI tests plus extra API/SQL probes, so the experiment evaluates added coverage and layers together. It does not establish a general performance claim about production mortgage platforms.
+
+Resume bullets are generated from actual results in EVALUATION.md. Do not claim hosted CI success, production readiness, or native concurrency results until those checks are run.

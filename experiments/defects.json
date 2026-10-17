@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ui-status",
+    "description": "Approved UI badge renders SUBMITTED",
+    "probes": ["UI05", "XL02"]
+  },
+  {
+    "id": "invalid-ratio",
+    "description": "Submission ignores 80% maximum",
+    "probes": ["UI09", "API05"]
+  },
+  {
+    "id": "approval-not-persisted",
+    "description": "Approval returns success without SQL update",
+    "probes": ["UI05", "API11", "XL02"]
+  },
+  {
+    "id": "duplicate-review",
+    "description": "A finalized decision can be changed again",
+    "probes": ["API10", "API14"]
+  },
+  {
+    "id": "record-leak",
+    "description": "Applicant can read another applicant by ID",
+    "probes": ["API07"]
+  },
+  {
+    "id": "response-field",
+    "description": "monthlyIncome is returned as a string",
+    "probes": ["UI02", "API02", "API13"]
+  },
+  {
+    "id": "missing-document",
+    "description": "Submission ignores PDF prerequisite",
+    "probes": ["UI08", "API04"]
+  },
+  {
+    "id": "officer-scope",
+    "description": "Officer can review outside assigned scope",
+    "probes": ["API08"]
+  }
+]

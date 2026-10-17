@@ -1,0 +1,394 @@
+{
+  "recordedAt": "2026-10-11T09:01:02.664Z",
+  "database": "PostgreSQL 18.3 (PGlite 0.5.8) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit",
+  "browserExecutable": "/root/.cache/ms-playwright/chromium_headless_shell-1194/chrome-linux/headless_shell",
+  "runs": [
+    {
+      "defect": "clean",
+      "approach": "A",
+      "detected": false,
+      "exitCode": 0,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 10320.952,
+      "failedTests": [],
+      "examples": []
+    },
+    {
+      "defect": "clean",
+      "approach": "B",
+      "detected": false,
+      "exitCode": 0,
+      "passed": 30,
+      "failed": 0,
+      "durationMs": 13052.089,
+      "failedTests": [],
+      "examples": []
+    },
+    {
+      "defect": "ui-status",
+      "approach": "A",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 10,
+      "failed": 1,
+      "durationMs": 15817.457999999999,
+      "failedTests": [
+        "UI05 officer approves; applicant sees final status"
+      ],
+      "examples": [
+        {
+          "test": "UI05 officer approves; applicant sees final status",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('article', { name: 'Application QA-a7dcfe81', exact: true }).getByRole('status')\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('article', { name: 'Application QA-a7dcfe81', exact: true }).getByRole('status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-a7dcfe81', exact: true }).getByRole('status')\u001b[22m\n\u001b[2m    - locator resolved to <span role=\"status\" class=\"badge submitted\">SUBMITTED</span>\u001b[22m\n\u001b[2m    13 × unexpected value \"SUBMITTED\"\u001b[22m\n\u001b[2m       - locator resolved to <span role=\"status\" class=\"badge approved\">SUBMITTED</span>\u001b[22m\n\u001b[2m    - unexpected value \"SUBMITTED\"\u001b[22m\n\n\n   at pages/ApplicationPage.ts:10\n\n   8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n> 10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n     |                                                                                            ^\n  11 | }\n  12 |\n    at ReviewPage.status (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:10:92)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:7:444"
+        }
+      ]
+    },
+    {
+      "defect": "ui-status",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 28,
+      "failed": 2,
+      "durationMs": 24218.514,
+      "failedTests": [
+        "XL02 UI decision agrees with API and SQL",
+        "UI05 officer approves; applicant sees final status"
+      ],
+      "examples": [
+        {
+          "test": "XL02 UI decision agrees with API and SQL",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('article', { name: 'Application QA-812aa26b', exact: true }).getByRole('status')\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('article', { name: 'Application QA-812aa26b', exact: true }).getByRole('status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-812aa26b', exact: true }).getByRole('status')\u001b[22m\n\u001b[2m    - locator resolved to <span role=\"status\" class=\"badge submitted\">SUBMITTED</span>\u001b[22m\n\u001b[2m    13 × unexpected value \"SUBMITTED\"\u001b[22m\n\u001b[2m       - locator resolved to <span role=\"status\" class=\"badge approved\">SUBMITTED</span>\u001b[22m\n\u001b[2m    - unexpected value \"SUBMITTED\"\u001b[22m\n\n\n   at pages/ApplicationPage.ts:10\n\n   8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n> 10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n     |                                                                                            ^\n  11 | }\n  12 |\n    at ReviewPage.status (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:10:92)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:22:439"
+        },
+        {
+          "test": "UI05 officer approves; applicant sees final status",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('article', { name: 'Application QA-ca9b87bc', exact: true }).getByRole('status')\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('article', { name: 'Application QA-ca9b87bc', exact: true }).getByRole('status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-ca9b87bc', exact: true }).getByRole('status')\u001b[22m\n\u001b[2m    - locator resolved to <span role=\"status\" class=\"badge submitted\">SUBMITTED</span>\u001b[22m\n\u001b[2m    13 × unexpected value \"SUBMITTED\"\u001b[22m\n\u001b[2m       - locator resolved to <span role=\"status\" class=\"badge approved\">SUBMITTED</span>\u001b[22m\n\u001b[2m    - unexpected value \"SUBMITTED\"\u001b[22m\n\n\n   at pages/ApplicationPage.ts:10\n\n   8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n> 10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n     |                                                                                            ^\n  11 | }\n  12 |\n    at ReviewPage.status (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:10:92)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:7:444"
+        }
+      ]
+    },
+    {
+      "defect": "invalid-ratio",
+      "approach": "A",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 10,
+      "failed": 1,
+      "durationMs": 15140.651,
+      "failedTests": [
+        "UI09 one cent above 80 percent rejected"
+      ],
+      "examples": [
+        {
+          "test": "UI09 one cent above 80 percent rejected",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"Loan cannot exceed 80% of property value\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n   9 | test('UI07 invalid income rejected',async({login,application,page})=>{await login.login();const d=data({monthlyIncome:0});await application.create(d);await expect(page.getByRole('alert')).toHaveText('Validation failed');await expect(application.card(d.applicantName)).toHaveCount(0);});\n  10 | test('UI08 missing document rejected',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.status(d.applicantName,'DRAFT');await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('A supporting PDF is required');await application.status(d.applicantName,'DRAFT');});\n> 11 | test('UI09 one cent above 80 percent rejected',async({login,application,page})=>{await login.login();const d=data({requestedLoan:160000.01});await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('Loan cannot exceed 80% of property value');await application.status(d.applicantName,'DRAFT');});\n     |                                                                                                                                                                                                                                                                                                    ^\n  12 | test('UI10 applicant has no review controls',async({login,page})=>{await login.login();await expect(page.getByRole('button',{name:'Approve application'})).toHaveCount(0);});\n  13 | test('UI11 wrong role login denied',async({page})=>{await page.goto('/');await page.getByRole('combobox',{name:'Role',exact:true}).selectOption('OFFICER');await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByRole('alert')).toHaveText('Invalid credentials or role');});\n  14 |\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:11:292"
+        }
+      ]
+    },
+    {
+      "defect": "invalid-ratio",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 28,
+      "failed": 2,
+      "durationMs": 19308.592,
+      "failedTests": [
+        "API05 ratio exceeded leaves SQL unchanged",
+        "UI09 one cent above 80 percent rejected"
+      ],
+      "examples": [
+        {
+          "test": "API05 ratio exceeded leaves SQL unchanged",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n   9 | for(const field of ['monthlyIncome','requestedLoan','propertyValue'] as const)test(`API03 ${field} zero rejected with structured validation`,async({api,request})=>{await api.login();const r=await request.post('/api/loans',{data:data({[field]:0})});expect(r.status()).toBe(400);expect(errorSchema.parse(await r.json()).issues?.length).toBeGreaterThan(0);});\n  10 | test('API04 missing document leaves SQL unchanged',async({api})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await api.submit(l.id);expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n> 11 | test('API05 ratio exceeded leaves SQL unchanged',async({api})=>{await api.login();const l=await api.create(data({requestedLoan:160000.01}));await api.upload(l.id);const before=await record(l.id);expect((await api.submit(l.id)).status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                                                              ^\n  12 | test('API06 applicant review forbidden and SQL unchanged',async({api})=>{await api.login();const l=await api.submitted();const before=await record(l.id);expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  13 | test('API07 other applicant cannot read record',async({api,request})=>{await api.login();const l=await api.create();await api.login('bob');const before=await record(l.id);expect((await request.get(`/api/loans/${l.id}`)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  14 | test('API08 out-of-scope officer cannot decide',async({api})=>{await api.login('bob');const l=await api.submitted();const before=await record(l.id);await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:11:238"
+        },
+        {
+          "test": "UI09 one cent above 80 percent rejected",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"Loan cannot exceed 80% of property value\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n   9 | test('UI07 invalid income rejected',async({login,application,page})=>{await login.login();const d=data({monthlyIncome:0});await application.create(d);await expect(page.getByRole('alert')).toHaveText('Validation failed');await expect(application.card(d.applicantName)).toHaveCount(0);});\n  10 | test('UI08 missing document rejected',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.status(d.applicantName,'DRAFT');await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('A supporting PDF is required');await application.status(d.applicantName,'DRAFT');});\n> 11 | test('UI09 one cent above 80 percent rejected',async({login,application,page})=>{await login.login();const d=data({requestedLoan:160000.01});await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('Loan cannot exceed 80% of property value');await application.status(d.applicantName,'DRAFT');});\n     |                                                                                                                                                                                                                                                                                                    ^\n  12 | test('UI10 applicant has no review controls',async({login,page})=>{await login.login();await expect(page.getByRole('button',{name:'Approve application'})).toHaveCount(0);});\n  13 | test('UI11 wrong role login denied',async({page})=>{await page.goto('/');await page.getByRole('combobox',{name:'Role',exact:true}).selectOption('OFFICER');await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByRole('alert')).toHaveText('Invalid credentials or role');});\n  14 |\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:11:292"
+        }
+      ]
+    },
+    {
+      "defect": "approval-not-persisted",
+      "approach": "A",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 10,
+      "failed": 1,
+      "durationMs": 15556.979,
+      "failedTests": [
+        "UI05 officer approves; applicant sees final status"
+      ],
+      "examples": [
+        {
+          "test": "UI05 officer approves; applicant sees final status",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('article', { name: 'Application QA-e1556feb', exact: true }).getByRole('status')\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('article', { name: 'Application QA-e1556feb', exact: true }).getByRole('status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-e1556feb', exact: true }).getByRole('status')\u001b[22m\n\u001b[2m    14 × locator resolved to <span role=\"status\" class=\"badge submitted\">SUBMITTED</span>\u001b[22m\n\u001b[2m       - unexpected value \"SUBMITTED\"\u001b[22m\n\n\n   at pages/ApplicationPage.ts:10\n\n   8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n> 10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n     |                                                                                            ^\n  11 | }\n  12 |\n    at ApplicationPage.status (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:10:92)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:7:538"
+        }
+      ]
+    },
+    {
+      "defect": "approval-not-persisted",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 25,
+      "failed": 5,
+      "durationMs": 21504.702,
+      "failedTests": [
+        "API10 duplicate review of APPROVED denied",
+        "API11 approval response persists across GET and SQL",
+        "API14 simultaneous decisions have exactly one winner",
+        "XL02 UI decision agrees with API and SQL",
+        "UI05 officer approves; applicant sees final status"
+      ],
+      "examples": [
+        {
+          "test": "API10 duplicate review of APPROVED denied",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\n\n   at helpers/assertions.ts:4\n\n  2 | import { record } from './db';\n  3 | import type { Loan } from '../../shared/contracts';\n> 4 | export async function persisted(loan:Loan){const sql=await record(loan.id);expect(sql.status).toBe(loan.status);expect(sql.applicant_id).toBe(loan.applicantId);expect(sql.document_name).toBe(loan.documentName);expect(sql.reason).toBe(loan.reason);expect(Number(sql.requested_loan)).toBe(loan.requestedLoan);}\n    |                                                                                               ^\n  5 |\n    at persisted (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/helpers/assertions.ts:4:95)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:16:274"
+        },
+        {
+          "test": "API11 approval response persists across GET and SQL",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"\u001b[7mAPPROV\u001b[27mED\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mSUBMITT\u001b[27mED\"\u001b[39m\n\n   at helpers/assertions.ts:4\n\n  2 | import { record } from './db';\n  3 | import type { Loan } from '../../shared/contracts';\n> 4 | export async function persisted(loan:Loan){const sql=await record(loan.id);expect(sql.status).toBe(loan.status);expect(sql.applicant_id).toBe(loan.applicantId);expect(sql.document_name).toBe(loan.documentName);expect(sql.reason).toBe(loan.reason);expect(Number(sql.requested_loan)).toBe(loan.requestedLoan);}\n    |                                                                                               ^\n  5 |\n    at persisted (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/helpers/assertions.ts:4:95)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:17:311"
+        },
+        {
+          "test": "API14 simultaneous decisions have exactly one winner",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    200,\u001b[22m\n\u001b[32m-   409,\u001b[39m\n\u001b[31m+   200,\u001b[39m\n\u001b[2m  ]\u001b[22m\n\n  18 | test('API12 spoofed PDF rejected; SQL unchanged',async({api,request})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await request.post(`/api/loans/${l.id}/document`,{multipart:{document:{...pdf,buffer:Buffer.from('not a PDF')}}});expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  19 | test('API13 response schema includes numeric income',async({api,request})=>{await api.login();const l=await api.create();const r=await request.get(`/api/loans/${l.id}`);expect(r.status()).toBe(200);expect(loanSchema.safeParse(await r.json()).success).toBe(true);});\n> 20 | test('API14 simultaneous decisions have exactly one winner',async({api,request})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const results=await Promise.all([request.post(`/api/loans/${l.id}/review`,{data:{decision:'APPROVED',reason:'Review A'}}),request.post(`/api/loans/${l.id}/review`,{data:{decision:'REJECTED',reason:'Review B'}})]);expect(results.map(r=>r.status()).sort()).toEqual([200,409]);const winner=loanSchema.parse(await results.find(r=>r.status()===200)!.json());await persisted(winner);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  21 | test('XL01 UI submission agrees with API and SQL',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');const api=new LoanApi(page.request);const r=await page.request.get('/api/loans');expect(r.status()).toBe(200);const loan=loanSchema.parse((await r.json()).find((x:{applicantName:string})=>x.applicantName===d.applicantName));expect(loan.status).toBe('SUBMITTED');await persisted(await api.get(loan.id));});\n  22 | test('XL02 UI decision agrees with API and SQL',async({login,application,review,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');await login.logout();await login.login('officer-north','OFFICER');await review.decide(d.applicantName,'APPROVED','Cross-layer review');await review.status(d.applicantName,'APPROVED');const r=await page.request.get('/api/loans');expect(r.status()).toBe(200);const loan=loanSchema.parse((await r.json()).find((x:{applicantName:string})=>x.applicantName===d.applicantName));expect(loan.status).toBe('APPROVED');await persisted(loan);});\n  23 |\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:20:430"
+        }
+      ]
+    },
+    {
+      "defect": "duplicate-review",
+      "approach": "A",
+      "detected": false,
+      "exitCode": 0,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 9619.022,
+      "failedTests": [],
+      "examples": []
+    },
+    {
+      "defect": "duplicate-review",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 27,
+      "failed": 3,
+      "durationMs": 14464.212,
+      "failedTests": [
+        "API10 duplicate review of APPROVED denied",
+        "API10 duplicate review of REJECTED denied",
+        "API14 simultaneous decisions have exactly one winner"
+      ],
+      "examples": [
+        {
+          "test": "API10 duplicate review of APPROVED denied",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m409\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  14 | test('API08 out-of-scope officer cannot decide',async({api})=>{await api.login('bob');const l=await api.submitted();const before=await record(l.id);await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  15 | test('API09 draft cannot be reviewed',async({api})=>{await api.login();const l=await api.create();await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(409);expect((await record(l.id)).status).toBe('DRAFT');});\n> 16 | for(const decision of ['APPROVED','REJECTED'])test(`API10 duplicate review of ${decision} denied`,async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id,decision);expect(r.status()).toBe(200);await persisted(loanSchema.parse(await r.json()));const before=await record(l.id);expect((await api.review(l.id,'APPROVED','Second attempt')).status()).toBe(409);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  17 | test('API11 approval response persists across GET and SQL',async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id);expect(r.status()).toBe(200);const result=loanSchema.parse(await r.json());expect(result.status).toBe('APPROVED');await persisted(result);expect((await api.get(l.id)).status).toBe('APPROVED');});\n  18 | test('API12 spoofed PDF rejected; SQL unchanged',async({api,request})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await request.post(`/api/loans/${l.id}/document`,{multipart:{document:{...pdf,buffer:Buffer.from('not a PDF')}}});expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  19 | test('API13 response schema includes numeric income',async({api,request})=>{await api.login();const l=await api.create();const r=await request.get(`/api/loans/${l.id}`);expect(r.status()).toBe(200);expect(loanSchema.safeParse(await r.json()).success).toBe(true);});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:16:426"
+        },
+        {
+          "test": "API10 duplicate review of REJECTED denied",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m409\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  14 | test('API08 out-of-scope officer cannot decide',async({api})=>{await api.login('bob');const l=await api.submitted();const before=await record(l.id);await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  15 | test('API09 draft cannot be reviewed',async({api})=>{await api.login();const l=await api.create();await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(409);expect((await record(l.id)).status).toBe('DRAFT');});\n> 16 | for(const decision of ['APPROVED','REJECTED'])test(`API10 duplicate review of ${decision} denied`,async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id,decision);expect(r.status()).toBe(200);await persisted(loanSchema.parse(await r.json()));const before=await record(l.id);expect((await api.review(l.id,'APPROVED','Second attempt')).status()).toBe(409);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  17 | test('API11 approval response persists across GET and SQL',async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id);expect(r.status()).toBe(200);const result=loanSchema.parse(await r.json());expect(result.status).toBe('APPROVED');await persisted(result);expect((await api.get(l.id)).status).toBe('APPROVED');});\n  18 | test('API12 spoofed PDF rejected; SQL unchanged',async({api,request})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await request.post(`/api/loans/${l.id}/document`,{multipart:{document:{...pdf,buffer:Buffer.from('not a PDF')}}});expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  19 | test('API13 response schema includes numeric income',async({api,request})=>{await api.login();const l=await api.create();const r=await request.get(`/api/loans/${l.id}`);expect(r.status()).toBe(200);expect(loanSchema.safeParse(await r.json()).success).toBe(true);});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:16:426"
+        },
+        {
+          "test": "API14 simultaneous decisions have exactly one winner",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    200,\u001b[22m\n\u001b[32m-   409,\u001b[39m\n\u001b[31m+   200,\u001b[39m\n\u001b[2m  ]\u001b[22m\n\n  18 | test('API12 spoofed PDF rejected; SQL unchanged',async({api,request})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await request.post(`/api/loans/${l.id}/document`,{multipart:{document:{...pdf,buffer:Buffer.from('not a PDF')}}});expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  19 | test('API13 response schema includes numeric income',async({api,request})=>{await api.login();const l=await api.create();const r=await request.get(`/api/loans/${l.id}`);expect(r.status()).toBe(200);expect(loanSchema.safeParse(await r.json()).success).toBe(true);});\n> 20 | test('API14 simultaneous decisions have exactly one winner',async({api,request})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const results=await Promise.all([request.post(`/api/loans/${l.id}/review`,{data:{decision:'APPROVED',reason:'Review A'}}),request.post(`/api/loans/${l.id}/review`,{data:{decision:'REJECTED',reason:'Review B'}})]);expect(results.map(r=>r.status()).sort()).toEqual([200,409]);const winner=loanSchema.parse(await results.find(r=>r.status()===200)!.json());await persisted(winner);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  21 | test('XL01 UI submission agrees with API and SQL',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');const api=new LoanApi(page.request);const r=await page.request.get('/api/loans');expect(r.status()).toBe(200);const loan=loanSchema.parse((await r.json()).find((x:{applicantName:string})=>x.applicantName===d.applicantName));expect(loan.status).toBe('SUBMITTED');await persisted(await api.get(loan.id));});\n  22 | test('XL02 UI decision agrees with API and SQL',async({login,application,review,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');await login.logout();await login.login('officer-north','OFFICER');await review.decide(d.applicantName,'APPROVED','Cross-layer review');await review.status(d.applicantName,'APPROVED');const r=await page.request.get('/api/loans');expect(r.status()).toBe(200);const loan=loanSchema.parse((await r.json()).find((x:{applicantName:string})=>x.applicantName===d.applicantName));expect(loan.status).toBe('APPROVED');await persisted(loan);});\n  23 |\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:20:430"
+        }
+      ]
+    },
+    {
+      "defect": "record-leak",
+      "approach": "A",
+      "detected": false,
+      "exitCode": 0,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 10308.228000000001,
+      "failedTests": [],
+      "examples": []
+    },
+    {
+      "defect": "record-leak",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 29,
+      "failed": 1,
+      "durationMs": 13714.444,
+      "failedTests": [
+        "API07 other applicant cannot read record"
+      ],
+      "examples": [
+        {
+          "test": "API07 other applicant cannot read record",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m403\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  11 | test('API05 ratio exceeded leaves SQL unchanged',async({api})=>{await api.login();const l=await api.create(data({requestedLoan:160000.01}));await api.upload(l.id);const before=await record(l.id);expect((await api.submit(l.id)).status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  12 | test('API06 applicant review forbidden and SQL unchanged',async({api})=>{await api.login();const l=await api.submitted();const before=await record(l.id);expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n> 13 | test('API07 other applicant cannot read record',async({api,request})=>{await api.login();const l=await api.create();await api.login('bob');const before=await record(l.id);expect((await request.get(`/api/loans/${l.id}`)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                                                       ^\n  14 | test('API08 out-of-scope officer cannot decide',async({api})=>{await api.login('bob');const l=await api.submitted();const before=await record(l.id);await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  15 | test('API09 draft cannot be reviewed',async({api})=>{await api.login();const l=await api.create();await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(409);expect((await record(l.id)).status).toBe('DRAFT');});\n  16 | for(const decision of ['APPROVED','REJECTED'])test(`API10 duplicate review of ${decision} denied`,async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id,decision);expect(r.status()).toBe(200);await persisted(loanSchema.parse(await r.json()));const before=await record(l.id);expect((await api.review(l.id,'APPROVED','Second attempt')).status()).toBe(409);expect(await record(l.id)).toEqual(before);});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:13:231"
+        }
+      ]
+    },
+    {
+      "defect": "response-field",
+      "approach": "A",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 4,
+      "failed": 7,
+      "durationMs": 119331.141,
+      "failedTests": [
+        "UI02 draft creation",
+        "UI03 PDF upload",
+        "UI04 @smoke submit at exactly 80 percent",
+        "UI05 officer approves; applicant sees final status",
+        "UI06 officer rejects and reason is displayed",
+        "UI08 missing document rejected",
+        "UI09 one cent above 80 percent rejected"
+      ],
+      "examples": [
+        {
+          "test": "UI02 draft creation",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('article', { name: 'Application QA-15fd3c9f', exact: true }).getByRole('status')\nExpected: \u001b[32m\"DRAFT\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('article', { name: 'Application QA-15fd3c9f', exact: true }).getByRole('status') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-15fd3c9f', exact: true }).getByRole('status')\u001b[22m\n\n\n   at pages/ApplicationPage.ts:10\n\n   8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n> 10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n     |                                                                                            ^\n  11 | }\n  12 |\n    at ApplicationPage.status (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:10:92)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:4:138"
+        },
+        {
+          "test": "UI03 PDF upload",
+          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m\nError: locator.setInputFiles: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-87e279a8', exact: true }).getByLabel('Supporting PDF')\u001b[22m\n\n\n   at pages/ApplicationPage.ts:8\n\n   6 |  card(name:string){return this.page.getByRole('article',{name:`Application ${name}`,exact:true});}\n   7 |  async create(d:LoanInput){for(const [label,value] of [['Applicant name',d.applicantName],['Monthly income',d.monthlyIncome],['Requested loan amount',d.requestedLoan],['Property value',d.propertyValue],['Loan purpose',d.purpose]] as const)await this.page.getByLabel(label,{exact:true}).fill(String(value));await this.page.getByRole('button',{name:'Create draft'}).click();}\n>  8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n     |                            ^\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n  10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n  11 | }\n    at ApplicationPage.upload (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:8:28)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:5:116"
+        },
+        {
+          "test": "UI04 @smoke submit at exactly 80 percent",
+          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m\nError: locator.setInputFiles: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('article', { name: 'Application QA-6ba20022', exact: true }).getByLabel('Supporting PDF')\u001b[22m\n\n\n   at pages/ApplicationPage.ts:8\n\n   6 |  card(name:string){return this.page.getByRole('article',{name:`Application ${name}`,exact:true});}\n   7 |  async create(d:LoanInput){for(const [label,value] of [['Applicant name',d.applicantName],['Monthly income',d.monthlyIncome],['Requested loan amount',d.requestedLoan],['Property value',d.propertyValue],['Loan purpose',d.purpose]] as const)await this.page.getByLabel(label,{exact:true}).fill(String(value));await this.page.getByRole('button',{name:'Create draft'}).click();}\n>  8 |  async upload(name:string){await this.card(name).getByLabel('Supporting PDF').setInputFiles(pdf);await expect(this.card(name).getByText('supporting.pdf',{exact:true})).toBeVisible();}\n     |                            ^\n   9 |  async submit(name:string){await this.card(name).getByRole('button',{name:'Submit application'}).click();}\n  10 |  async status(name:string,status:string){await expect(this.card(name).getByRole('status')).toHaveText(status);}\n  11 | }\n    at ApplicationPage.upload (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/pages/ApplicationPage.ts:8:28)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:6:141"
+        }
+      ]
+    },
+    {
+      "defect": "response-field",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 8,
+      "failed": 22,
+      "durationMs": 167841.307,
+      "failedTests": [
+        "API02 creation returns 201 and strict schema matches SQL",
+        "API04 missing document leaves SQL unchanged",
+        "API05 ratio exceeded leaves SQL unchanged",
+        "API06 applicant review forbidden and SQL unchanged",
+        "API07 other applicant cannot read record",
+        "API08 out-of-scope officer cannot decide",
+        "API09 draft cannot be reviewed",
+        "API10 duplicate review of APPROVED denied",
+        "API10 duplicate review of REJECTED denied",
+        "API11 approval response persists across GET and SQL",
+        "API12 spoofed PDF rejected; SQL unchanged",
+        "API13 response schema includes numeric income",
+        "API14 simultaneous decisions have exactly one winner",
+        "XL01 UI submission agrees with API and SQL",
+        "XL02 UI decision agrees with API and SQL",
+        "UI02 draft creation",
+        "UI03 PDF upload",
+        "UI04 @smoke submit at exactly 80 percent",
+        "UI05 officer approves; applicant sees final status",
+        "UI06 officer rejects and reason is displayed",
+        "UI08 missing document rejected",
+        "UI09 one cent above 80 percent rejected"
+      ],
+      "examples": [
+        {
+          "test": "API02 creation returns 201 and strict schema matches SQL",
+          "message": "ZodError: [\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"monthlyIncome\"\n    ],\n    \"message\": \"Invalid input: expected number, received string\"\n  }\n]\n\n   at helpers/api.ts:7\n\n   5 |  constructor(readonly request:APIRequestContext){}\n   6 |  async login(id='alice',role='APPLICANT'){const r=await this.request.post('/api/login',{data:{id,role,password:'Demo123!'}});expect(r.status()).toBe(200);return userSchema.parse(await r.json());}\n>  7 |  async create(input:LoanInput=data()){const r=await this.request.post('/api/loans',{data:input});expect(r.status()).toBe(201);return loanSchema.parse(await r.json());}\n     |                                                                                                                                                 ^\n   8 |  async upload(id:string){const r=await this.request.post(`/api/loans/${id}/document`,{multipart:{document:pdf}});expect(r.status()).toBe(200);return loanSchema.parse(await r.json());}\n   9 |  async submit(id:string){return this.request.post(`/api/loans/${id}/submit`);}\n  10 |  async submitted(input:LoanInput=data()){const l=await this.create(input);await this.upload(l.id);const r=await this.submit(l.id);expect(r.status()).toBe(200);loanSchema.parse(await r.json());return l;}\n    at LoanApi.create (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/helpers/api.ts:7:145)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:8:114"
+        },
+        {
+          "test": "API04 missing document leaves SQL unchanged",
+          "message": "ZodError: [\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"monthlyIncome\"\n    ],\n    \"message\": \"Invalid input: expected number, received string\"\n  }\n]\n\n   at helpers/api.ts:7\n\n   5 |  constructor(readonly request:APIRequestContext){}\n   6 |  async login(id='alice',role='APPLICANT'){const r=await this.request.post('/api/login',{data:{id,role,password:'Demo123!'}});expect(r.status()).toBe(200);return userSchema.parse(await r.json());}\n>  7 |  async create(input:LoanInput=data()){const r=await this.request.post('/api/loans',{data:input});expect(r.status()).toBe(201);return loanSchema.parse(await r.json());}\n     |                                                                                                                                                 ^\n   8 |  async upload(id:string){const r=await this.request.post(`/api/loans/${id}/document`,{multipart:{document:pdf}});expect(r.status()).toBe(200);return loanSchema.parse(await r.json());}\n   9 |  async submit(id:string){return this.request.post(`/api/loans/${id}/submit`);}\n  10 |  async submitted(input:LoanInput=data()){const l=await this.create(input);await this.upload(l.id);const r=await this.submit(l.id);expect(r.status()).toBe(200);loanSchema.parse(await r.json());return l;}\n    at LoanApi.create (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/helpers/api.ts:7:145)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:10:93"
+        },
+        {
+          "test": "API05 ratio exceeded leaves SQL unchanged",
+          "message": "ZodError: [\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"monthlyIncome\"\n    ],\n    \"message\": \"Invalid input: expected number, received string\"\n  }\n]\n\n   at helpers/api.ts:7\n\n   5 |  constructor(readonly request:APIRequestContext){}\n   6 |  async login(id='alice',role='APPLICANT'){const r=await this.request.post('/api/login',{data:{id,role,password:'Demo123!'}});expect(r.status()).toBe(200);return userSchema.parse(await r.json());}\n>  7 |  async create(input:LoanInput=data()){const r=await this.request.post('/api/loans',{data:input});expect(r.status()).toBe(201);return loanSchema.parse(await r.json());}\n     |                                                                                                                                                 ^\n   8 |  async upload(id:string){const r=await this.request.post(`/api/loans/${id}/document`,{multipart:{document:pdf}});expect(r.status()).toBe(200);return loanSchema.parse(await r.json());}\n   9 |  async submit(id:string){return this.request.post(`/api/loans/${id}/submit`);}\n  10 |  async submitted(input:LoanInput=data()){const l=await this.create(input);await this.upload(l.id);const r=await this.submit(l.id);expect(r.status()).toBe(200);loanSchema.parse(await r.json());return l;}\n    at LoanApi.create (/workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/helpers/api.ts:7:145)\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:11:91"
+        }
+      ]
+    },
+    {
+      "defect": "missing-document",
+      "approach": "A",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 10,
+      "failed": 1,
+      "durationMs": 15714.682,
+      "failedTests": [
+        "UI08 missing document rejected"
+      ],
+      "examples": [
+        {
+          "test": "UI08 missing document rejected",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"A supporting PDF is required\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n   8 | test('UI06 officer rejects and reason is displayed',async({login,application,review,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');await login.logout();await login.login('officer-north','OFFICER');await review.decide(d.applicantName,'REJECTED','Incomplete supporting evidence');await review.status(d.applicantName,'REJECTED');await login.logout();await login.login();await application.status(d.applicantName,'REJECTED');await expect(page.getByText('Decision reason: Incomplete supporting evidence')).toBeVisible();});\n   9 | test('UI07 invalid income rejected',async({login,application,page})=>{await login.login();const d=data({monthlyIncome:0});await application.create(d);await expect(page.getByRole('alert')).toHaveText('Validation failed');await expect(application.card(d.applicantName)).toHaveCount(0);});\n> 10 | test('UI08 missing document rejected',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.status(d.applicantName,'DRAFT');await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('A supporting PDF is required');await application.status(d.applicantName,'DRAFT');});\n     |                                                                                                                                                                                                                                                                          ^\n  11 | test('UI09 one cent above 80 percent rejected',async({login,application,page})=>{await login.login();const d=data({requestedLoan:160000.01});await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('Loan cannot exceed 80% of property value');await application.status(d.applicantName,'DRAFT');});\n  12 | test('UI10 applicant has no review controls',async({login,page})=>{await login.login();await expect(page.getByRole('button',{name:'Approve application'})).toHaveCount(0);});\n  13 | test('UI11 wrong role login denied',async({page})=>{await page.goto('/');await page.getByRole('combobox',{name:'Role',exact:true}).selectOption('OFFICER');await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByRole('alert')).toHaveText('Invalid credentials or role');});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:10:266"
+        }
+      ]
+    },
+    {
+      "defect": "missing-document",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 28,
+      "failed": 2,
+      "durationMs": 19547.091,
+      "failedTests": [
+        "API04 missing document leaves SQL unchanged",
+        "UI08 missing document rejected"
+      ],
+      "examples": [
+        {
+          "test": "API04 missing document leaves SQL unchanged",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n   8 | test('API02 creation returns 201 and strict schema matches SQL',async({api})=>{await api.login();await persisted(await api.create());});\n   9 | for(const field of ['monthlyIncome','requestedLoan','propertyValue'] as const)test(`API03 ${field} zero rejected with structured validation`,async({api,request})=>{await api.login();const r=await request.post('/api/loans',{data:data({[field]:0})});expect(r.status()).toBe(400);expect(errorSchema.parse(await r.json()).issues?.length).toBeGreaterThan(0);});\n> 10 | test('API04 missing document leaves SQL unchanged',async({api})=>{await api.login();const l=await api.create();const before=await record(l.id);const r=await api.submit(l.id);expect(r.status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                  ^\n  11 | test('API05 ratio exceeded leaves SQL unchanged',async({api})=>{await api.login();const l=await api.create(data({requestedLoan:160000.01}));await api.upload(l.id);const before=await record(l.id);expect((await api.submit(l.id)).status()).toBe(400);expect(await record(l.id)).toEqual(before);});\n  12 | test('API06 applicant review forbidden and SQL unchanged',async({api})=>{await api.login();const l=await api.submitted();const before=await record(l.id);expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  13 | test('API07 other applicant cannot read record',async({api,request})=>{await api.login();const l=await api.create();await api.login('bob');const before=await record(l.id);expect((await request.get(`/api/loans/${l.id}`)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:10:194"
+        },
+        {
+          "test": "UI08 missing document rejected",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('alert')\nExpected: \u001b[32m\"A supporting PDF is required\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\n\n   8 | test('UI06 officer rejects and reason is displayed',async({login,application,review,page})=>{await login.login();const d=data();await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await application.status(d.applicantName,'SUBMITTED');await login.logout();await login.login('officer-north','OFFICER');await review.decide(d.applicantName,'REJECTED','Incomplete supporting evidence');await review.status(d.applicantName,'REJECTED');await login.logout();await login.login();await application.status(d.applicantName,'REJECTED');await expect(page.getByText('Decision reason: Incomplete supporting evidence')).toBeVisible();});\n   9 | test('UI07 invalid income rejected',async({login,application,page})=>{await login.login();const d=data({monthlyIncome:0});await application.create(d);await expect(page.getByRole('alert')).toHaveText('Validation failed');await expect(application.card(d.applicantName)).toHaveCount(0);});\n> 10 | test('UI08 missing document rejected',async({login,application,page})=>{await login.login();const d=data();await application.create(d);await application.status(d.applicantName,'DRAFT');await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('A supporting PDF is required');await application.status(d.applicantName,'DRAFT');});\n     |                                                                                                                                                                                                                                                                          ^\n  11 | test('UI09 one cent above 80 percent rejected',async({login,application,page})=>{await login.login();const d=data({requestedLoan:160000.01});await application.create(d);await application.upload(d.applicantName);await application.submit(d.applicantName);await expect(page.getByRole('alert')).toHaveText('Loan cannot exceed 80% of property value');await application.status(d.applicantName,'DRAFT');});\n  12 | test('UI10 applicant has no review controls',async({login,page})=>{await login.login();await expect(page.getByRole('button',{name:'Approve application'})).toHaveCount(0);});\n  13 | test('UI11 wrong role login denied',async({page})=>{await page.goto('/');await page.getByRole('combobox',{name:'Role',exact:true}).selectOption('OFFICER');await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page.getByRole('alert')).toHaveText('Invalid credentials or role');});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/ui.spec.ts:10:266"
+        }
+      ]
+    },
+    {
+      "defect": "officer-scope",
+      "approach": "A",
+      "detected": false,
+      "exitCode": 0,
+      "passed": 11,
+      "failed": 0,
+      "durationMs": 9752.509,
+      "failedTests": [],
+      "examples": []
+    },
+    {
+      "defect": "officer-scope",
+      "approach": "B",
+      "detected": true,
+      "exitCode": 1,
+      "passed": 29,
+      "failed": 1,
+      "durationMs": 13706.141,
+      "failedTests": [
+        "API08 out-of-scope officer cannot decide"
+      ],
+      "examples": [
+        {
+          "test": "API08 out-of-scope officer cannot decide",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m403\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  12 | test('API06 applicant review forbidden and SQL unchanged',async({api})=>{await api.login();const l=await api.submitted();const before=await record(l.id);expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n  13 | test('API07 other applicant cannot read record',async({api,request})=>{await api.login();const l=await api.create();await api.login('bob');const before=await record(l.id);expect((await request.get(`/api/loans/${l.id}`)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n> 14 | test('API08 out-of-scope officer cannot decide',async({api})=>{await api.login('bob');const l=await api.submitted();const before=await record(l.id);await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(403);expect(await record(l.id)).toEqual(before);});\n     |                                                                                                                                                                                                                                          ^\n  15 | test('API09 draft cannot be reviewed',async({api})=>{await api.login();const l=await api.create();await api.login('officer-north','OFFICER');expect((await api.review(l.id)).status()).toBe(409);expect((await record(l.id)).status).toBe('DRAFT');});\n  16 | for(const decision of ['APPROVED','REJECTED'])test(`API10 duplicate review of ${decision} denied`,async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id,decision);expect(r.status()).toBe(200);await persisted(loanSchema.parse(await r.json()));const before=await record(l.id);expect((await api.review(l.id,'APPROVED','Second attempt')).status()).toBe(409);expect(await record(l.id)).toEqual(before);});\n  17 | test('API11 approval response persists across GET and SQL',async({api})=>{await api.login();const l=await api.submitted();await api.login('officer-north','OFFICER');const r=await api.review(l.id);expect(r.status()).toBe(200);const result=loanSchema.parse(await r.json());expect(result.status).toBe('APPROVED');await persisted(result);expect((await api.get(l.id)).status).toBe('APPROVED');});\n    at /workspace/scratch/6d46ed1993f6/LoanFlow-QA/tests/cross-layer.spec.ts:14:234"
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "approach": "A",
+      "detected": 5,
+      "total": 8,
+      "recall": 0.625,
+      "falsePositiveCount": 0,
+      "mutantDurationMs": 211240.66999999998
+    },
+    {
+      "approach": "B",
+      "detected": 8,
+      "total": 8,
+      "recall": 1,
+      "falsePositiveCount": 0,
+      "mutantDurationMs": 294305.003
+    }
+  ]
+}

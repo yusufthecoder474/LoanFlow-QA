@@ -1,0 +1,11 @@
+{
+  "method": "Regular Playwright browser automation (MCP was blocked)",
+  "browser": "141.0.7390.37",
+  "screens": [
+    "login",
+    "applicant draft with supporting PDF",
+    "officer submitted review",
+    "applicant final approval"
+  ],
+  "recordedAt": "2026-10-11T08:55:43.498Z"
+}

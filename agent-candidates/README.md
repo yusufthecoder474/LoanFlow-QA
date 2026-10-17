@@ -1,0 +1,1 @@
+Candidate tests belong here and are not collected by playwright.config.ts. Human approval is required before copying a candidate to tests/. The generated planner/generator definitions are optional. No healer is enabled.

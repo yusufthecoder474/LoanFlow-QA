@@ -1,0 +1,20 @@
+| Defect | Approach | Detected | Passed | Failed | Seconds |
+|---|---|---|---:|---:|---:|
+| clean | A | no | 11 | 0 | 10.32 |
+| clean | B | no | 30 | 0 | 13.05 |
+| ui-status | A | yes | 10 | 1 | 15.82 |
+| ui-status | B | yes | 28 | 2 | 24.22 |
+| invalid-ratio | A | yes | 10 | 1 | 15.14 |
+| invalid-ratio | B | yes | 28 | 2 | 19.31 |
+| approval-not-persisted | A | yes | 10 | 1 | 15.56 |
+| approval-not-persisted | B | yes | 25 | 5 | 21.50 |
+| duplicate-review | A | no | 11 | 0 | 9.62 |
+| duplicate-review | B | yes | 27 | 3 | 14.46 |
+| record-leak | A | no | 11 | 0 | 10.31 |
+| record-leak | B | yes | 29 | 1 | 13.71 |
+| response-field | A | yes | 4 | 7 | 119.33 |
+| response-field | B | yes | 8 | 22 | 167.84 |
+| missing-document | A | yes | 10 | 1 | 15.71 |
+| missing-document | B | yes | 28 | 2 | 19.55 |
+| officer-scope | A | no | 11 | 0 | 9.75 |
+| officer-scope | B | yes | 29 | 1 | 13.71 |

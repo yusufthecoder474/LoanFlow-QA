@@ -1,0 +1,59 @@
+name: Clean QA checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  clean-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16.15
+        env:
+          POSTGRES_USER: loanflow
+          POSTGRES_PASSWORD: loanflow_ci
+          POSTGRES_DB: loanflow
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U loanflow -d loanflow"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql://loanflow:loanflow_ci@127.0.0.1:5432/loanflow
+      NODE_ENV: test
+      ENABLE_FAULTS: "false"
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium firefox
+      - run: npm run db:migrate
+      - run: npm run db:seed
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build
+      - run: npm test
+      - name: Preserve Chromium JSON
+        if: always()
+        run: cp artifacts/standard-results.json artifacts/chromium-ci-results.json
+      - run: npm run test:firefox
+        env:
+          PW_JSON: artifacts/firefox-ci-results.json
+          PW_HTML: artifacts/firefox-report
+          PW_OUTPUT: artifacts/firefox-test-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qa-evidence
+          path: |
+            playwright-report/
+            test-results/
+            artifacts/*results.json
+            artifacts/firefox-report/
+            artifacts/firefox-test-results/
+          retention-days: 14
