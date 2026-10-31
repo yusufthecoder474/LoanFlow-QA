@@ -371,3 +371,7 @@ I wanted a QA project that would be understandable even to someone who has never
 ## 📄 License
 
 The original repository declares **ISC** in `package.json`. See [LICENSE](LICENSE) for the matching source-code license. Third-party dependencies retain their own licenses. This project is for learning and demonstration; its license does not make it a regulated lending product.
+
+## Retry-safe loan creation (optional)
+
+The API now supports per-applicant `Idempotency-Key` headers on `POST /api/loans`, with database-enforced duplicate prevention and six regression scenarios. See [idempotency architecture and limits](docs/IDEMPOTENCY.md). This is a synthetic loan demo, **not** a payment-processing implementation.
