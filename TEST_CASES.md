@@ -36,3 +36,37 @@
 | XL02   | R07–R09  | UI approval vs API/SQL               | All report APPROVED and same reason             |
 
 Fresh QA-prefixed data is created in each scenario. See tests/ui.spec.ts and tests/cross-layer.spec.ts for exact steps and HTTP/SQL assertions. tests/seed.spec.ts is an agent seed, explicitly excluded from standard test counting.
+
+## Verified test execution results
+
+**Environment:** GitHub Actions, Playwright, Chromium and Firefox  
+**Verification date:** October 31, 2026  
+**CI run:** https://github.com/yusufthecoder474/LoanFlow-QA/actions/runs/41198255419
+
+| Test group | Result | Evidence |
+|---|---|---|
+| Original Chromium UI/API/SQL scenarios | 30 test instances included in regression suite | `TEST_CASES.md` and Playwright CI |
+| Idempotency regression scenarios | 6 additional test cases | `tests/idempotency.spec.ts` |
+| Full Chromium regression | 36 passed | GitHub Actions CI |
+| Firefox smoke tests | 2 passed | GitHub Actions CI |
+| TypeScript checks, lint and build | Passed | GitHub Actions CI |
+
+### Defect investigation evidence
+
+The controlled fault-injection experiment detected 8 of 8 intentionally seeded defects with combined UI, API and SQL checks, compared with 5 of 8 using UI-only checks.
+
+Three investigated examples are documented as GitHub Issues:
+
+- LF-001: https://github.com/yusufthecoder474/LoanFlow-QA/issues/2
+- LF-002: https://github.com/yusufthecoder474/LoanFlow-QA/issues/3
+- LF-003: https://github.com/yusufthecoder474/LoanFlow-QA/issues/4
+
+These are intentionally injected educational defects, not unresolved production defects.
+
+### Change verification
+
+Pull Request #1 added retry-safe loan creation, database idempotency constraints and six automated regression scenarios.
+
+Merged PR: https://github.com/yusufthecoder474/LoanFlow-QA/pull/1
+
+The CI results above belong to the verified PR commit. They do not claim that each fault-injection experiment passed as an ordinary regression test.
