@@ -5,7 +5,7 @@ import express, {
   type NextFunction,
 } from "express";
 import multer from "multer";
-import { randomBytes, randomUUID } from "node:crypto";
+import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { db } from "./db";
 import { matches } from "./password";
@@ -139,21 +139,47 @@ app.post("/api/loans", async (req: AuthRequest, res) => {
       .status(400)
       .json({ error: "Validation failed", issues: p.error.issues });
   const d = p.data;
+  // Optional client-supplied retry key. Existing clients can omit it.
+  const key = req.get("Idempotency-Key");
+  if (key !== undefined && !/^[A-Za-z0-9_-]{8,128}$/.test(key))
+    return fail(res, 400, "Invalid Idempotency-Key");
+  const payloadHash = key
+    ? createHash("sha256").update(JSON.stringify(d)).digest("hex")
+    : null;
   const id = randomUUID();
-  const r = await db.query(
-    "INSERT INTO loans (id,applicant_id,scope,applicant_name,monthly_income,requested_loan,property_value,purpose) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
-    [
-      id,
-      u.id,
-      u.scope,
-      d.applicantName,
-      d.monthlyIncome,
-      d.requestedLoan,
-      d.propertyValue,
-      d.purpose,
-    ],
+  const values = [
+    id,
+    u.id,
+    u.scope,
+    d.applicantName,
+    d.monthlyIncome,
+    d.requestedLoan,
+    d.propertyValue,
+    d.purpose,
+  ];
+  if (!key) {
+    const r = await db.query(
+      "INSERT INTO loans (id,applicant_id,scope,applicant_name,monthly_income,requested_loan,property_value,purpose) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+      values,
+    );
+    return res.status(201).json(toLoan(r.rows[0]));
+  }
+  // The partial unique index serializes same-applicant, same-key races.
+  // A conflicting insert blocks until the winner commits, then returns no row.
+  const created = await db.query(
+    "INSERT INTO loans (id,applicant_id,scope,applicant_name,monthly_income,requested_loan,property_value,purpose,idempotency_key,idempotency_hash) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT (applicant_id,idempotency_key) WHERE idempotency_key IS NOT NULL DO NOTHING RETURNING *",
+    [...values, key, payloadHash],
   );
-  res.status(201).json(toLoan(r.rows[0]));
+  if (created.rows[0]) return res.status(201).json(toLoan(created.rows[0]));
+  const previous = await db.query(
+    "SELECT * FROM loans WHERE applicant_id=$1 AND idempotency_key=$2",
+    [u.id, key],
+  );
+  if (!previous.rows[0]) return fail(res, 503, "Retry the request");
+  if (previous.rows[0].idempotency_hash !== payloadHash)
+    return fail(res, 409, "Idempotency key reused with different loan data");
+  res.setHeader("Idempotent-Replayed", "true");
+  return res.status(201).json(toLoan(previous.rows[0]));
 });
 // Read access is enforced before any document or workflow operation.
 app.use("/api/loans/:id", async (req: AuthRequest, res, next) => {
